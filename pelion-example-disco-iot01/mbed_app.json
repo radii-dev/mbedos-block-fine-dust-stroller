@@ -1,0 +1,58 @@
+{
+    "target_overrides": {
+        "*": {
+            "target.components_remove"                  : ["FLASHIAP"],
+            "platform.stdio-baud-rate"                  : 9600,
+            "platform.stdio-convert-newlines"           : true,
+            "mbed-trace.enable"                         : null,
+            "nsapi.default-wifi-security"               : "WPA_WPA2",
+            "nsapi.default-wifi-ssid"                   : "\"AndroidHotspot8754\"",
+            "nsapi.default-wifi-password"               : "\"jyh1357957!\""
+        },
+        "DISCO_L475VG_IOT01A": {
+            "target.macros_remove"                      : ["MBED_TICKLESS"],
+            "target.components_add"                     : ["QSPIF"],
+            "target.components_add"                     : ["WIFI_ISM43362"],
+            "target.extra_labels_remove"                : ["STM32L475xG"],
+            "target.extra_labels_add"                   : ["STM32L475xG_SRAM2"],
+            "target.network-default-interface-type"     : "WIFI",
+            "device-management.flash-start-address"     : "0x08000000",
+            "device-management.flash-size"              : "(1024*1024)",
+            "device-management.sotp-section-1-address"  : "(MBED_CONF_APP_FLASH_START_ADDRESS + MBED_CONF_APP_FLASH_SIZE - 2*(2*1024))",
+            "device-management.sotp-section-1-size"     : "(2*1024)",
+            "device-management.sotp-section-2-address"  : "(MBED_CONF_APP_FLASH_START_ADDRESS + MBED_CONF_APP_FLASH_SIZE - 1*(2*1024))",
+            "device-management.sotp-section-2-size"     : "(2*1024)",
+            "update-client.application-details"         : "(MBED_CONF_APP_FLASH_START_ADDRESS + 64*1024)",
+            "update-client.storage-address"             : "(2*1024*1024)",
+            "update-client.storage-size"                : "(2*1024*1024)",
+            "update-client.storage-locations"           : "1",
+            "target.features_add"                       : ["BOOTLOADER"],
+            "target.bootloader_img"                     : "bootloader/mbed-bootloader-DISCO_L475VG_IOT01A.bin",
+            "target.header_offset"                      : "0x10000",
+            "target.app_offset"                         : "0x10400",
+            "button-pressed-state"                      : 0
+        }
+    },
+    "config": {
+        "format-storage-layer-on-error": {
+            "help": "Whether to format the storage layer when it cannot be read - always disable for production devices!",
+            "value": 1
+        },
+        "main-stack-size": {
+            "value": 6000
+        },
+        "use-button": {
+            "help": "Whether the target has a button",
+            "macro_name": "USE_BUTTON",
+            "value": true
+        },
+        "button-pressed-state": {
+            "help": "Value of the button when pressed",
+            "value": 1
+        },
+        "no_led": {
+            "help": "This flag disables the heartbeat thread in tests. This is useful for platforms that don't have an LED or the LED is used for other functionality like LED on the SPI clockline etc",
+            "value": null
+        }
+    }
+}

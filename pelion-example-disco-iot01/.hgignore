@@ -1,0 +1,10 @@
+syntax: glob
+BUILD/
+*.pyc
+.DS_Store
+.env
+.cache/
+.pytest_cache/
+.update-certificates/
+.manifest_tool.json
+.mbed_cloud_config.json
